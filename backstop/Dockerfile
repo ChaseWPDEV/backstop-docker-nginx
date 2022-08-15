@@ -1,8 +1,11 @@
-FROM ubuntu:latest
+FROM node:18.7.0
 WORKDIR /usr/src/app
+
 RUN apt-get update && apt-get install -y  && \
-    apt-get install -y npm nodejs && npm install -g backstopjs \
+    npm install -g npm@8.17.0 && \
+    npm install -g backstopjs \
     backstop init && \
-    backstop test
+    npm fund && \
+    backstop test --docker
 # make an edits using $ sed
 CMD ["/bin/bash"]
