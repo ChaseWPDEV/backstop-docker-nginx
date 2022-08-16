@@ -4,7 +4,7 @@ report({
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_BackstopJS_Homepage_0_document_0_phone.png",
-        "test": "../bitmaps_test/20220816-160946/backstop_default_BackstopJS_Homepage_0_document_0_phone.png",
+        "test": "../bitmaps_test/20220816-150812/backstop_default_BackstopJS_Homepage_0_document_0_phone.png",
         "selector": "document",
         "fileName": "backstop_default_BackstopJS_Homepage_0_document_0_phone.png",
         "label": "BackstopJS Homepage",
@@ -14,14 +14,14 @@ report({
         "referenceUrl": "",
         "expect": 0,
         "viewportLabel": "phone",
-        "error": "Reference file not found /src/backstop_data/bitmaps_reference/backstop_default_BackstopJS_Homepage_0_document_0_phone.png"
+        "error": "Reference file not found /home/gladdos/WebstormProjects/backstop_dat/backstop/backstop_data/bitmaps_reference/backstop_default_BackstopJS_Homepage_0_document_0_phone.png"
       },
       "status": "fail"
     },
     {
       "pair": {
         "reference": "../bitmaps_reference/backstop_default_BackstopJS_Homepage_0_document_1_tablet.png",
-        "test": "../bitmaps_test/20220816-160946/backstop_default_BackstopJS_Homepage_0_document_1_tablet.png",
+        "test": "../bitmaps_test/20220816-150812/backstop_default_BackstopJS_Homepage_0_document_1_tablet.png",
         "selector": "document",
         "fileName": "backstop_default_BackstopJS_Homepage_0_document_1_tablet.png",
         "label": "BackstopJS Homepage",
@@ -31,7 +31,7 @@ report({
         "referenceUrl": "",
         "expect": 0,
         "viewportLabel": "tablet",
-        "error": "Reference file not found /src/backstop_data/bitmaps_reference/backstop_default_BackstopJS_Homepage_0_document_1_tablet.png"
+        "error": "Reference file not found /home/gladdos/WebstormProjects/backstop_dat/backstop/backstop_data/bitmaps_reference/backstop_default_BackstopJS_Homepage_0_document_1_tablet.png"
       },
       "status": "fail"
     }
