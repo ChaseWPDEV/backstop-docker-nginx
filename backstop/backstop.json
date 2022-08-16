@@ -7,9 +7,24 @@
       "height": 480
     },
     {
-      "label": "tablet",
-      "width": 1024,
-      "height": 768
+      "label": "HD",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "label": "FullHD",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "label": "2K",
+      "width": 2048,
+      "height": 1080
+    },
+    {
+      "label": "4K",
+      "width": 4096,
+      "height": 2160
     }
   ],
   "onBeforeScript": "puppet/onBefore.js",
@@ -18,7 +33,7 @@
     {
       "label": "BackstopJS Homepage",
       "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "https://garris.github.io/BackstopJS/",
+      "url": "https://datbooster.com",
       "referenceUrl": "",
       "readyEvent": "",
       "readySelector": "",
