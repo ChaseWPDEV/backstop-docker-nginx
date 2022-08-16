@@ -2,17 +2,18 @@ version: "3.9"
 services:
   backstop:
     build: backstop/.
-    image: glad2os/backstop:latest
     volumes:
-      - backstop:/usr/src/app
+      - backstop:/src
+    command:
+      - "test"
   nginx:
     build: nginx/.
     #https://www.nginx.com/resources/wiki/start/topics/examples/full/
     depends_on:
       - backstop
     volumes:
-      - backstop:/usr/src/app
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - backstop:/src
+#      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "8080:80"
 volumes:
