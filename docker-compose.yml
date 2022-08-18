@@ -1,12 +1,14 @@
 version: "3.9"
 services:
   backstop:
+    container_name:  backstop-js
     build: backstop/.
     volumes:
       - backstop:/src
     command:
       - "test"
   nginx:
+    container_name:  backstop-nginx
     build: nginx/.
     #https://www.nginx.com/resources/wiki/start/topics/examples/full/
     depends_on:
