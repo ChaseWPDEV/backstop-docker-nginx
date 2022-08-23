@@ -1,4 +1,5 @@
 #!/bin/bash
+docker volume create --name=backstop
 docker-compose build
 docker-compose up -d
 
