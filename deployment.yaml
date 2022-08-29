@@ -52,6 +52,10 @@
           single_branch: yes
           version: master
 
+      - name: Create a volume
+        docker_volume:
+          name: backstop
+
       - name: Run docker-compose up
         community.docker.docker_compose:
           project_src: /root/backstop-docker/
