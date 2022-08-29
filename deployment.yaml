@@ -1,0 +1,59 @@
+---
+  - name: Backstop JS deployment playbook
+    hosts: all
+    become: yes
+    become_user: root
+    tasks:
+      - name: Update apt-get repo and cache
+        apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+      - name: Update all packages to their latest version
+        ansible.builtin.apt:
+          name: "*"
+          state: latest
+
+      - name: Install a list of packages
+        ansible.builtin.apt:
+          pkg:
+          - git
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+
+      - name: Add Docker GPG apt Key
+        apt_key:
+          url: https://download.docker.com/linux/ubuntu/gpg
+          state: present
+
+      - name: Add Docker Repository
+        apt_repository:
+          repo: deb https://download.docker.com/linux/ubuntu focal stable
+          state: present
+
+      - name: Update apt and install docker-ce
+        apt:
+          name: docker-ce
+          state: latest
+          update_cache: true
+
+      - name: Install a list of packages
+        ansible.builtin.apt:
+          pkg:
+          - docker-ce-cli
+          - containerd.io
+          - docker-compose-plugin
+          - docker-compose
+
+      - name: Example clone of a single branch
+        ansible.builtin.git:
+          repo: https://github.com/glad2os/backstop-docker-nginx.git
+          dest: /root/backstop-docker/
+          single_branch: yes
+          version: master
+
+      - name: Run docker-compose up
+        community.docker.docker_compose:
+          project_src: /root/backstop-docker/
+          build: true
+          register: output
