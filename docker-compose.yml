@@ -4,7 +4,6 @@ services:
     container_name: backstop-js
     build: backstop/.
     volumes:
-      - backstop:/src/backstop_data
       - ./backstop:/src
     entrypoint: "backstop"
 #    stdin_open: true # docker run -i
@@ -17,9 +16,6 @@ services:
     depends_on:
       - backstop
     volumes:
-      - backstop:/src/
+      - ./backstop/backstop_data:/src/
     ports:
       - "80:80"
-volumes:
-  backstop:
-    external: true

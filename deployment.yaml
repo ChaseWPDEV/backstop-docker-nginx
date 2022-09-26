@@ -52,10 +52,6 @@
           single_branch: yes
           version: master
 
-      - name: Create a volume
-        docker_volume:
-          name: backstop
-
       - name: users | adding docker users (for use without sudo)
         user:
           name: "{{ansible_user}}"
