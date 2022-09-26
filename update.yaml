@@ -9,6 +9,7 @@
           project_src: "{{hostname.project_path}}"
           build: false
           stopped: true
+        ignore_errors: yes
 
       - name: Update a repository
         ansible.builtin.shell: git pull
