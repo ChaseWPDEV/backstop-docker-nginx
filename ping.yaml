@@ -1,0 +1,7 @@
+---
+  - name: test
+    hosts: aws
+    become: yes
+    tasks:
+      - name: test
+        shell: echo hello "{{ hostname.name }}"

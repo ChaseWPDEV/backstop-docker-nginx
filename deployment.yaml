@@ -1,8 +1,8 @@
 ---
-  - name: Backstop JS deployment playbook
-    hosts: all
+  - name: Backstop JS first deployment playbook
+    hosts: aws
     become: yes
-    become_user: root
+    become_user: "{{ansible_user}}"
     tasks:
       - name: Update apt-get repo and cache
         apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
@@ -48,7 +48,7 @@
       - name: Example clone of a single branch
         ansible.builtin.git:
           repo: https://github.com/glad2os/backstop-docker-nginx.git
-          dest: /root/backstop-docker/
+          dest: "{{hostname.project_path}}"
           single_branch: yes
           version: master
 
@@ -56,8 +56,13 @@
         docker_volume:
           name: backstop
 
+      - name: users | adding docker users (for use without sudo)
+        user:
+          name: "{{ansible_user}}"
+          append: yes
+          groups: docker
+
       - name: Run docker-compose up
         community.docker.docker_compose:
-          project_src: /root/backstop-docker/
+          project_src: "{{hostname.project_path}}"
           build: true
-          register: output

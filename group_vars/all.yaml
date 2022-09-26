@@ -1,0 +1,6 @@
+---
+ansible_user: "ubuntu"
+ansible_ssh_private_key_file: ~/.ssh/backstop.pem
+hostname:
+  name: aws
+  project_path: /home/ubuntu/backstop-docker/
