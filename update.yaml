@@ -10,11 +10,10 @@
           build: false
           stopped: true
 
-      - name: Git pull a new version
-        ansible.builtin.git:
-          repo: https://github.com/glad2os/backstop-docker-nginx.git
-          dest: "{{hostname.project_path}}"
-          refspec: '+refs/pull/*:refs/heads/*'
+      - name: Update a repository
+        ansible.builtin.shell: git pull
+        args:
+          chdir: "{{hostname.project_path}}"
 
       - name: Run docker-compose up
         community.docker.docker_compose:

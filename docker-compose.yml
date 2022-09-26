@@ -4,19 +4,20 @@ services:
     container_name: backstop-js
     build: backstop/.
     volumes:
-      - backstop:/src
+      - backstop:/src/backstop_data
+      - ./backstop:/src
+    entrypoint: "backstop"
+#    stdin_open: true # docker run -i
+#    tty: true        # docker run -t
     command:
       - "test"
   nginx:
     container_name: backstop-nginx
     build: nginx/.
-    #https://www.nginx.com/resources/wiki/start/topics/examples/full/
     depends_on:
       - backstop
     volumes:
-      - backstop:/src
-      - ./volume:/src/backstop_data
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - backstop:/src/
     ports:
       - "80:80"
 volumes:
