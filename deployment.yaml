@@ -45,7 +45,7 @@
           - docker-compose-plugin
           - docker-compose
 
-      - name: Example clone of a single branch
+      - name: Git clone project
         ansible.builtin.git:
           repo: https://github.com/glad2os/backstop-docker-nginx.git
           dest: "{{hostname.project_path}}"
