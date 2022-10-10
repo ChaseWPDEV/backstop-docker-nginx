@@ -1,0 +1,17 @@
+{
+  "name": "cwpdev-backstop",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "node ./app.js",
+    "approve": "node ./app.js approve"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "minimist": "^1.2.6",
+    "sendmail": "^1.6.1",
+    "winston": "^3.8.2"
+  }
+}
