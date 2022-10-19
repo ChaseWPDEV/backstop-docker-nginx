@@ -2,7 +2,7 @@
     "scenarios": [
         {
             "label": "Home",
-            "url": "/",
+            "commonUrl": "/",
             "referenceUrl": "",
             "readyEvent": "",
             "readySelector": "",
@@ -20,7 +20,7 @@
           },
           {
             "label": "Upgrade",
-            "url": "/upgrade",
+            "commonUrl": "/upgrade",
             "referenceUrl": "",
             "readyEvent": "",
             "readySelector": "",
@@ -38,7 +38,7 @@
           },
           {
             "label": "Classroom",
-            "url": "/classroom",
+            "commonUrl": "/classroom",
             "referenceUrl": "",
             "readyEvent": "",
             "readySelector": "",
@@ -56,7 +56,7 @@
           },
           {
             "label": "Past Test Results",
-            "url": "/classroom/past-test-results/",
+            "commonUrl": "/classroom/past-test-results/",
             "referenceUrl": "",
             "readyEvent": "",
             "readySelector": "",
@@ -74,7 +74,7 @@
           },
           {
             "label": "Saved Questions",
-            "url": "/classroom/saved-questions/",
+            "commonUrl": "/classroom/saved-questions/",
             "referenceUrl": "",
             "readyEvent": "",
             "readySelector": "",
