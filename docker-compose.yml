@@ -1,21 +1,16 @@
+
 version: "3.9"
 services:
   backstop:
-    container_name: backstop-js
-    build: backstop/.
+    container_name: pixel-sentry
+    build: ./
+    stdin_open: true
     volumes:
-      - ./backstop:/src
-    entrypoint: "backstop"
-#    stdin_open: true # docker run -i
-#    tty: true        # docker run -t
-    command:
-      - "test"
+      - ./config:/src/config
   nginx:
-    container_name: backstop-nginx
+    container_name: pixel-nginx
     build: nginx/.
-    depends_on:
-      - backstop
     volumes:
-      - ./backstop/backstop_data:/src/
+      - ./config/html:/usr/share/nginx/html
     ports:
       - "80:80"

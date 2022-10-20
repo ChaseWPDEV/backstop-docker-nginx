@@ -1,0 +1,27 @@
+{
+    "viewports": [
+        {
+          "label": "phone",
+          "width": 320,
+          "height": 480
+        },
+        {
+          "label": "desktop",
+          "width": 1600,
+          "height": 900
+        }
+    ],
+    "onBeforeScript": "./onBefore/onBefore.js",
+    "report": ["browser"],
+    "engine": "puppeteer",
+    "engineOptions": {
+        "args": ["--no-sandbox"]
+        },
+    "asyncCaptureLimit": 5,
+    "asyncCompareLimit": 50,
+    "debug": false,
+    "debugWindow": false,
+    "alerts": [
+        "chase@cwpdev.com"
+    ]
+}

@@ -1,0 +1,69 @@
+{
+    "sites":[
+        {
+            "id":"datbooster_staging_premium",
+            "username" : "backstopjs-premium",
+            "applicationPassword" : "jSo7CoJzivNq9Zxx8VJTtHOH",
+            "rootUrl": "https://b8ca665f60.nxcli.net",
+            "authCookieUrl": "https://b8ca665f60.nxcli.net/wp-json/cwpdev-rest-login/v1/cookies/user/",
+            "scenarios":[
+                {
+                    "label": "Biology Test Cards",
+                    "url": "/classroom/biology/",
+                    "referenceUrl": "",
+                    "readyEvent": "",
+                    "readySelector": "",
+                    "delay": 2500,
+                    "hideSelectors": [],
+                    "removeSelectors": [],
+                    "hoverSelector": "",
+                    "clickSelector": "",
+                    "postInteractionWait": 0,
+                    "selectors": [],
+                    "selectorExpansion": true,
+                    "expect": 0,
+                    "misMatchThreshold" : 0.1,
+                    "requireSameDimensions": true
+                  },
+                  {
+                    "label": "Biology Video page",
+                    "url": "/classroom/biology/",
+                    "referenceUrl": "",
+                    "readyEvent": "",
+                    "readySelector": "",
+                    "delay": 2500,
+                    "onReadyScript": "navToExpandedVideo.js",
+                    "hideSelectors": [],
+                    "removeSelectors": [],
+                    "hoverSelector": "",
+                    "clickSelector": "#fusion-tab-videocontent",
+                    "postInteractionWait": 0,
+                    "selectors": [],
+                    "selectorExpansion": true,
+                    "expect": 0,
+                    "misMatchThreshold" : 0.1,
+                    "requireSameDimensions": true
+                  },
+                  {
+                    "label": "Biology Question Bank",
+                    "url": "/classroom/biology/",
+                    "referenceUrl": "",
+                    "readyEvent": "",
+                    "readySelector": "",
+                    "delay": 2500,
+                    "onReadyScript": "navToQuestionBank.js",
+                    "hideSelectors": [],
+                    "removeSelectors": [],
+                    "hoverSelector": "",
+                    "clickSelector": "#fusion-tab-videocontent",
+                    "postInteractionWait": 0,
+                    "selectors": [],
+                    "selectorExpansion": true,
+                    "expect": 0,
+                    "misMatchThreshold" : 0.1,
+                    "requireSameDimensions": true
+                  }
+            ]
+        }
+    ]
+}

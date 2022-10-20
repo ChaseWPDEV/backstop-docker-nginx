@@ -1,1 +1,0 @@
-FROM backstopjs/backstopjs:latest
