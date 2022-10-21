@@ -10,6 +10,7 @@ const commonScenarios= require('./config/scenarios.json').scenarios;
 
 const parseArgs = require('minimist');
 
+
 const logger = winston.createLogger({
     level: 'info',
     format: format.combine(
@@ -35,30 +36,39 @@ function main(){
     const argsOptions = parseArgs(process.argv.slice(2));
     const autoApprove= argsOptions._[0] === 'approve';
 
-        for(let i in manifest.sites){
-            let config=manifest.sites[i];
+        manifest.sites.forEach(detailConfig=>{
             
-            let scenarios=[...commonScenarios, ...config.scenarios]
-                .map(page=>{
-                    page.url=config.rootUrl+page.url;
-                    return page;
-                });
+            let scenarios=[...commonScenarios, ...detailConfig.scenarios]
+            .filter((page=>{
+                if(! detailConfig.exclude){
+                    return true;
+                }
+                return detailConfig.exclude.indexOf(page.label) === -1;
+            }))
+            .map(page=>{
+                if(page.commonUrl){
+                    page.url=detailConfig.rootUrl+page.commonUrl;
+                } else {
+                    page.url=detailConfig.rootUrl+page.url;
+                }
+                return page;
+            });
 
-            let paths={
-                "bitmaps_reference": `./config/html/references/${config.id}`,
-                "bitmaps_test": `./config/html/tests/${config.id}`,
+            const paths={
+                "bitmaps_reference": `./config/html/references/${detailConfig.id}`,
+                "bitmaps_test": `./config/html/tests/${detailConfig.id}`,
                 "engine_scripts": "./config/scripts",
-                "html_report": `./config/html/reports/${config.id}`
+                "html_report": `./config/html/reports/${detailConfig.id}`
                 };
             
-                let testConfig={ ...commonConfig, ...config, ...{
+                const testConfig={ ...commonConfig, ...detailConfig, ...{
                     "scenarios": scenarios,
                     "paths": paths
                 }
             }
 
             if(autoApprove){
-                backstopjs('approve', {config: testConfig})
+                backstopjs('approve', {'config': testConfig})
                     .catch((err)=>{
                         logger.log({
                             level: 'error',
@@ -66,17 +76,17 @@ function main(){
                         })
                 });
             } else {
-            backstopjs('test', {config : testConfig})
+            backstopjs('test', {'config' : testConfig})
                 .then(()=> {})
                 .catch(()=>{
-                    let setAlerts=new Set([...commonConfig.alerts, ...(config.alerts || [])]);
+                    let setAlerts=new Set([...commonConfig.alerts, ...(detailConfig.alerts || [])]);
                     Array.from(setAlerts).map(address=>
                         sendmail({
                             from: 'no-reply@boosterprep.com',
                             to: address,
-                            subject: `Backstop failure on ${config.id}`,
+                            subject: `Backstop failure on ${detailConfig.id}`,
                             html: `There has been a failure for backstop tests on ${commonConfig.rootUrl}.
-                            Please visit the <a href="http://3.98.137.178/${config.id}">Backstop report page</a> for details.`
+                            Please visit the <a href="http://3.98.137.178/${detailConfig.id}">Backstop report page</a> for details.`
                         }, function(err, reply){
                             logger.log({
                                 level: 'error',
@@ -85,7 +95,7 @@ function main(){
                         }));
                 })
             }
-        }
+        });
 }
 
 main();
