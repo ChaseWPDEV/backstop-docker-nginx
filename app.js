@@ -32,11 +32,12 @@ const logger = winston.createLogger({
     ]
   });
 
-function main(){
+async function main(){
     const argsOptions = parseArgs(process.argv.slice(2));
     const autoApprove= argsOptions._[0] === 'approve';
 
-        manifest.sites.forEach(detailConfig=>{
+        for(let i=0; i<manifest.sites.length; i++){
+            detailConfig=manifest.sites[i];
             
             let scenarios=[...commonScenarios, ...detailConfig.scenarios]
             .filter((page=>{
@@ -76,26 +77,17 @@ function main(){
                         })
                 });
             } else {
-            backstopjs('test', {'config' : testConfig})
-                .then(()=> {})
-                .catch(()=>{
-                    let setAlerts=new Set([...commonConfig.alerts, ...(detailConfig.alerts || [])]);
-                    Array.from(setAlerts).map(address=>
-                        sendmail({
-                            from: 'no-reply@boosterprep.com',
-                            to: address,
-                            subject: `Backstop failure on ${detailConfig.id}`,
-                            html: `There has been a failure for backstop tests on ${commonConfig.rootUrl}.
-                            Please visit the <a href="http://3.98.137.178/${detailConfig.id}">Backstop report page</a> for details.`
-                        }, function(err, reply){
-                            logger.log({
-                                level: 'error',
-                                'message': err && err.stack
-                            });
-                        }));
-                })
+                console.log(detailConfig.rootUrl);
+               
+                await backstopjs('test', {'config' : testConfig})
+                .catch((err)=>{
+                    logger.log({
+                        level: 'error',
+                        'message': err
+                    })
+            });
             }
-        });
+        };
 }
 
 main();
