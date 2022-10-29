@@ -1,65 +1,6 @@
 {
     "sites":[
         {
-            "id":"datbooster_staging_premium",
-            "username" : "backstopjs-premium",
-            "applicationPassword" : "jSo7CoJzivNq9Zxx8VJTtHOH",
-            "rootUrl": "https://b8ca665f60.nxcli.net",
-            "authCookieUrl": "https://b8ca665f60.nxcli.net/wp-json/cwpdev-rest-login/v1/cookies/user/",
-            "scenarios":[
-                {
-                    "label": "Biology Test Cards",
-                    "url": "/classroom/biology/",
-                    "referenceUrl": "",
-                    "readyEvent": "",
-                    "readySelector": "",
-                    "delay": 2500,
-                    "hideSelectors": [],
-                    "removeSelectors": [],
-                    "selectors": [],
-                    "selectorExpansion": true,
-                    "expect": 0,
-                    "misMatchThreshold" : 0.1,
-                    "requireSameDimensions": true
-                  },
-                  {
-                    "label": "Biology Video page",
-                    "url": "/classroom/biology/",
-                    "referenceUrl": "",
-                    "readyEvent": "",
-                    "readySelector": "",
-                    "delay": 2500,
-                    "onReadyScript": "navToExpandedVideo.js",
-                    "hideSelectors": [],
-                    "removeSelectors": [],
-                    "selectors": [],
-                    "selectorExpansion": true,
-                    "expect": 0,
-                    "misMatchThreshold" : 0.1,
-                    "requireSameDimensions": true
-                  },
-                  {
-                    "label": "Biology Question Bank",
-                    "url": "/classroom/biology/",
-                    "referenceUrl": "",
-                    "readyEvent": "",
-                    "readySelector": "",
-                    "delay": 2500,
-                    "onReadyScript": "navToQuestionBank.js",
-                    "hideSelectors": [],
-                    "removeSelectors": [],
-                    "selectors": [],
-                    "selectorExpansion": true,
-                    "expect": 0,
-                    "misMatchThreshold" : 0.1,
-                    "requireSameDimensions": true
-                  },
-                  {
-
-                  }
-            ]
-        },
-        {
           "id":"datbooster_production_premium",
           "username" : "Chase",
           "applicationPassword" : "scpkYJa9dlrEU1nPcpk7wgLG",
@@ -110,7 +51,7 @@
                   "hideSelectors": [],
                   "removeSelectors": [],
                   "hoverSelector": "",
-                  "clickSelector": "#fusion-tab-videocontent",
+                  "clickSelector": "#fusion-tab-extraquestions",
                   "selectors": [],
                   "selectorExpansion": true,
                   "expect": 0,
